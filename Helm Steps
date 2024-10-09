@@ -19,22 +19,34 @@ Steps to install Grafana:
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 helm install grafana stable/grafana
+helm list
+kubectl get all
 kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
+##Test access from browser
 #minikube service grafana-ext
 
 To get user name and password in Grafana:
 
 kubectl get secret --namespace default grafana -o yaml
+username & password is encrypted....decrypt them
 echo "RkpwY21aTFNXRDVJN3Z4RWFFUjlibkV1SDBDbnFBendadmc0bmROZQ==" | openssl base64 -d ; echo
-
+then:
+##configure datasource from prometheus
+url = prometheus url(ip address&port# followed by /)
+#save & Test
+#create new dashboard or import from https://grafana.com/grafana/dashboards
+click on all dashboards
+copy id
+goto dashboard and import(+) id >>load>>import
 or 
 
 kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ----------------------------------------------------------
 
-
-
-
 Dashboards: https://grafana.com/grafana/dashboards/6417
+
+
+
+
 Grafana playlist: https://www.youtube.com/playlist?list=PLVx1qovxj-akOGKSoQ5sGc5ZRfH8Tpnow
 Prometheus Playlist: https://www.youtube.com/playlist?list=PLVx1qovxj-anCTn6um3BDsoHnIr0O2tz3
