@@ -8,6 +8,8 @@ helm install prometheus prometheus-community/prometheus
 kubectl get all
 kubectl get svc      ---svc only accessible internally
 kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext      ---access svc externally
+kubectl get svc
+##Test access from browser
 #minikube service prometheus-server-ext
 
 
