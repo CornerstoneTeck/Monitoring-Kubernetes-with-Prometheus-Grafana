@@ -6,7 +6,8 @@ helm repo update
 helm search repo prometheus        #observe different helm chart /flavors of prometheus
 helm install prometheus prometheus-community/prometheus
 kubectl get all
-kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+kubectl get svc      ---svc only accessible internally
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext      ---access svc externally
 #minikube service prometheus-server-ext
 
 
